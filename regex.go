@@ -39,10 +39,10 @@ func Match(pattern, str string) bool {
 	return re.MatchString(str)
 }
 
-// Replace replaces the first match of the pattern in the string with the new string
-func Replace(pattern, str, new string) string {
+// Replace replaces the nb first matches of the pattern in the string with the new string
+func Replace(pattern, str, new string, nb int) string {
 	re := regexp.MustCompile(pattern)
-	return strings.Replace(str, re.FindString(str), new, 1)
+	return strings.Replace(str, re.FindString(str), new, nb)
 }
 
 // ReplaceAll replaces all matches of the pattern in the string with the new string
