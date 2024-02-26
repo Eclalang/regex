@@ -71,9 +71,10 @@ func TestReplace(t *testing.T) {
 	pattern := "a"
 	str := "anunaban"
 	newStr := "AA"
+	nb := 2
 	comp := regexp.MustCompile(pattern)
-	expected := strings.Replace(str, comp.FindString(str), newStr, 1)
-	actual := Replace(pattern, str, newStr)
+	expected := strings.Replace(str, comp.FindString(str), newStr, nb)
+	actual := Replace(pattern, str, newStr, nb)
 	if actual != expected {
 		t.Errorf("Replace(\"%s\", \"%s\", \"%s\") returned %s, expected %s", pattern, str, newStr, actual, expected)
 	}
