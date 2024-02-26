@@ -1,39 +1,52 @@
 package regex
 
-import "regexp"
+import (
+	"regexp"
+	"strings"
+)
 
-// Find returns the first match of the regex in the string
-func Find(regex, str string) string {
-	re := regexp.MustCompile(regex)
+// Find returns the first match of the pattern in the string
+func Find(pattern, str string) string {
+	re := regexp.MustCompile(pattern)
 	return re.FindString(str)
 }
 
-// FindAll returns all matches of the regex in the string
-func FindAll(regex, str string) []string {
-	re := regexp.MustCompile(regex)
+// FindAll returns all matches of the pattern in the string
+func FindAll(pattern, str string) []string {
+	re := regexp.MustCompile(pattern)
 	return re.FindAllString(str, -1)
 }
 
-// FindAllIndex returns the indexes of all matches of the regex in the string
-func FindAllIndex(regex, str string) [][]int {
-	re := regexp.MustCompile(regex)
-	return re.FindAllStringIndex(str, -1)
+// FindAllIndex returns the indexes of all matches of the pattern in the string
+func FindAllIndex(pattern, str string) []int {
+	re := regexp.MustCompile(pattern)
+	var indexes []int
+	for _, match := range re.FindAllStringIndex(str, -1) {
+		indexes = append(indexes, match[0])
+	}
+	return indexes
 }
 
-// FindIndex returns the first and last index of the first match of the regex in the string
-func FindIndex(regex, str string) []int {
-	re := regexp.MustCompile(regex)
-	return re.FindStringIndex(str)
+// FindIndex returns the first and last index of the first match of the pattern in the string
+func FindIndex(pattern, str string) int {
+	re := regexp.MustCompile(pattern)
+	return re.FindStringIndex(str)[0]
 }
 
-// Match returns true if the regex matches the string
-func Match(regex, str string) bool {
-	re := regexp.MustCompile(regex)
+// Match returns true if the pattern matches the string
+func Match(pattern, str string) bool {
+	re := regexp.MustCompile(pattern)
 	return re.MatchString(str)
 }
 
-// ReplaceAll replaces all matches of the regex in the string with the new string
-func ReplaceAll(regex, str, new string) string {
-	re := regexp.MustCompile(regex)
+// Replace replaces the first match of the pattern in the string with the new string
+func Replace(pattern, str, new string) string {
+	re := regexp.MustCompile(pattern)
+	return strings.Replace(str, re.FindString(str), new, 1)
+}
+
+// ReplaceAll replaces all matches of the pattern in the string with the new string
+func ReplaceAll(pattern, str, new string) string {
+	re := regexp.MustCompile(pattern)
 	return re.ReplaceAllString(str, new)
 }
