@@ -1,6 +1,6 @@
-## REGEX LIBRARY FOR ECLA
+# Regex library
 
-# Candidate functions :
+## Candidate functions :
 
 |  Func Name   |                         Prototype                          |                                  Description                                   | Comments |
 |:------------:|:----------------------------------------------------------:|:------------------------------------------------------------------------------:|:--------:|
