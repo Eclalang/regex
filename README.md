@@ -1,5 +1,8 @@
 # Regex library
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/Eclalang/regex)](https://goreportcard.com/report/github.com/Eclalang/regex)
+[![codecov](https://codecov.io/gh/Eclalang/regex/graph/badge.svg?token=YNCIYERVBO)](https://codecov.io/gh/Eclalang/regex)
+
 ## Candidate functions :
 
 |  Func Name   |                          Prototype                           |                                   Description                                    | Comments |
